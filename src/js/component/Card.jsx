@@ -1,45 +1,19 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { BsBagHeartFill } from "react-icons/bs";
-const Card = ({
-    imageSrc,
-    title,
-    gender,
-    haircolor,
-    eyecolor,
-    buttonLink,
-    buttonText,
-}) => {
-    return (
-        <div>
-            <div className="d-flex justify-content-start">
-                <div className="card" style="width: 18rem;">
-                    <img
-                        src={imageSrc}
-                        className="card-img-top"
-                        alt={title}
-                        style={{ height: "10rem", objectFit: "cover" }}
-                    />
-                    <div className="card-body">
-                        <h5 className="card-title">{item.name}</h5>
-                        <p className="card-text mb-0">{gender}</p>
-                        <p className="card-text mb-0">{haircolor}</p>
-                        <p className="card-text">{eyecolor}</p>
-                        <div>
-                            <Link to={buttonLink} className="btn btn-dark">
-                                {buttonText}
-                            </Link>
-                            <button
-                                type="button"
-                                className="btn btn-warning ms-4"
-                            >
-                                <BsBagHeartFill />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+import React from "react";
+
+export default function wrapCard(BodyComponent) {
+    const CardWrapper = (props) => {
+        const saveClick = () => {
+            console.log("Saved props:" + JSON.stringify(props));
+        };
+
+        return (
+            
+            <div className="card  h-100 flex-shrink-0 text-start mx-1">
+                
+                <BodyComponent {...props} />
             </div>
-        </div>
-    );
-};
-export default Card;
+            
+        );
+    };
+    return CardWrapper;
+}
