@@ -1,5 +1,58 @@
 /* General Styles */
-.card{
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card {
     width: 200px;
     height: 500px !important;
+    --bs-card-spacer-y: none !important;
+    --bs-card-title-spacer-y: none !important;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion {
+    width: 100%;
+}
+
+.accordion-body {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-y: hidden; /* Oculta el desplazamiento vertical */
+    white-space: nowrap; /* Evita que las tarjetas se envuelvan */
+    padding: 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #ffc107; /* Cambia el color de fondo del botón desplegado a amarillo */
+    color: #000; /* Cambia el color del texto a negro */
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125), 0 1px 1px rgba(0, 0, 0, 0.075); /* Añade un borde sombreado */
+}
+
+.card {
+    margin-right: 1rem; /* Espacio entre tarjetas */
+    flex: 0 0 auto; /* Asegura que las tarjetas no se reduzcan de tamaño */
+    width: 300px; /* Ajusta el ancho de las tarjetas según sea necesario */
+    height: 500px;
+}
+
+.card-title {
+    margin-bottom: 0.5rem; /* Reduce el margen inferior del título */
+    font-size: 1.25rem; /* Ajusta el tamaño de la fuente según sea necesario */
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 0.5rem; /* Reduce el margen inferior del texto */
+    font-size: 1rem; /* Ajusta el tamaño de la fuente según sea necesario */
+    color: #555;
 }

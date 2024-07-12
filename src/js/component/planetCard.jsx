@@ -7,15 +7,14 @@ const PlanetCard = ({planet}) => {
     }
     return (
         <>
-            <img onError={onImageError} src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`} class="card-img-top objet-fit-cover" alt="Planeta" />                                                  
+            <img onError={onImageError} src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`} class="card-img-top objet-fit-cover" width={298} height={298} alt="Planeta" />                                                  
                         <div className="card-body">  
                             <h5 class="card-title">{planet.name}</h5>
                             <p class="card-text">Population: {planet.population}</p>
                             <p class="card-text">Climate: {planet.climate}</p>
-                            <p class="card-text">Terrain: {planet.terrain}</p>
                         </div>
                         <div className="card-footer">
-                            <small class="text-body-secondary"><a href="#" class="btn btn-primary">View more...</a> <button type="button" className="btn btn-outline-warning"><i class="fa-regular fa-star"></i></button></small>                            
+                            <small className="text-body-secondary"><a href="#" class="btn btn-primary">View more...</a> <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            
                         </div>                    
                     <div>
                 </div>

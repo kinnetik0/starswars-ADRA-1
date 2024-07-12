@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             planetsList: [],
+            peopleList: [],
             
         },
         actions: {
@@ -57,7 +58,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({...obj})
                 console.log(data);
             },
+            swapiListPeople: async (elementType, page = 1, limit = 20) => {
+                try {
+                    let resp = await fetch(`${baseURL}/${elementType}/?page=${page}&limit=${limit}`);
+                    if (!resp.ok) {
+                        console.error(`Error en la peticion: ${resp.status}`);
+                        return {};
+                    }
+                    let data = await resp.json();
+                    let fetchList = data.results.map(item => fetch(item.url));
+                    let fetchResponses = await Promise.all(fetchList);
+                    let fetchJsons = fetchResponses.map(resp => resp.json());
+                    data = await Promise.all(fetchJsons);
+                    data = data.map(item => ({
+                        uid: item.result.uid,
+                        description: item.result.description,
+                        ...item.result.properties,
+                    }));
+                    let obj = {};
+                    obj[elementType + "List"] = data;
+                    setStore({ ...obj });
+                } catch (error) {
+                    console.error(`Error en la promesa ${error}`);
+                }
+            },
         },
     };
-};
+    };
+
 export default getState;
