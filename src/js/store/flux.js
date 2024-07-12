@@ -3,17 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             planetsList: [],
-            peopleList: [],
-            
+            peopleList: [], 
+            vehiclesList: [],
         },
         actions: {
-            // getPeople: async () => {
-            //     try {
-            //         let resp = await fetch("https://www.swapi.tech/api/people");
-            //         let data = await resp.json();
-            //         setStore({ people: data.results });
-            //     } catch (error) {}
-            // },
             swapiFetch: async (elementType, id) => {
                 try {
                     let resp = await fetch(`${baseURL}/${elementType}/${id}`);
@@ -48,14 +41,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                 let fetchJsons = await fetchResponses.map((resp) => resp.json())
                 //Arreglo de Data
                 data = await Promise.all(fetchJsons);
-                data=data.map(planet=>({
+                data = data.map(planet => ({
                     uid: planet.result.uid,
                     description: planet.result.description,
                     ...planet.result.properties,
                 }))
-                let obj={}
-                obj[elementType+"List"]=data;
-                setStore({...obj})
+                let obj = {}
+                obj[elementType + "List"] = data;
+                setStore({ ...obj })
                 console.log(data);
             },
             swapiListPeople: async (elementType, page = 1, limit = 20) => {
@@ -84,6 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
         },
     };
-    };
+};
 
 export default getState;

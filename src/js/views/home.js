@@ -3,6 +3,7 @@ import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import PlanetCard from "../component/planetCard.jsx";
 import PeopleCard from "../component/peopleCard.jsx";
+import VehiclesCard from "../component/vehiclesCard.jsx";
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -11,11 +12,13 @@ export const Home = () => {
     useEffect(() => {
         actions.swapiListPeople("people");
         actions.swapiList("planets");
+        actions.swapiList("vehicles");
     }, []);
 
     // Verificar si los datos se están obteniendo correctamente
     console.log("People List:", store.peopleList);
     console.log("Planets List:", store.planetsList);
+    console.log("Vehicles List:", store.vehiclesList);
 
     return (
         <div className="container-fluid mx-0 px-0">
@@ -47,12 +50,12 @@ export const Home = () => {
                 <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
+                            Vehicles
                         </button>
                     </h2>
                     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div className="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div className="accordion-body d-flex flex-row overflow-auto">
+                            {store.vehiclesList?.map((vehicle, index) => (<VehiclesCard key={index} vehicles={vehicle} />))}
                         </div>
                     </div>
                 </div>

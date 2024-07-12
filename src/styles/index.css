@@ -34,25 +34,24 @@ body, html {
 
 .accordion-button:not(.collapsed) {
     background-color: #ffc107; /* Cambia el color de fondo del botón desplegado a amarillo */
-    color: #000; /* Cambia el color del texto a negro */
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125), 0 1px 1px rgba(0, 0, 0, 0.075); /* Añade un borde sombreado */
+    color: #000; /* Cambia el color del texto del botón desplegado a negro */
 }
 
-.card {
-    margin-right: 1rem; /* Espacio entre tarjetas */
-    flex: 0 0 auto; /* Asegura que las tarjetas no se reduzcan de tamaño */
-    width: 300px; /* Ajusta el ancho de las tarjetas según sea necesario */
-    height: 500px;
+.accordion-button {
+    background-color: #343a40; /* Cambia el color de fondo del botón a gris oscuro */
+    color: #fff; /* Cambia el color del texto del botón a blanco */
+    border: none; /* Elimina el borde del botón */
 }
 
-.card-title {
-    margin-bottom: 0.5rem; /* Reduce el margen inferior del título */
-    font-size: 1.25rem; /* Ajusta el tamaño de la fuente según sea necesario */
-    font-weight: bold;
+.accordion-button:hover {
+    background-color: #ffc107; /* Cambia el color de fondo del botón al pasar el mouse a amarillo */
+    color: #000; /* Cambia el color del texto del botón al pasar el mouse a negro */
 }
 
-.card-text {
-    margin-bottom: 0.5rem; /* Reduce el margen inferior del texto */
-    font-size: 1rem; /* Ajusta el tamaño de la fuente según sea necesario */
-    color: #555;
+.accordion-button:focus {
+    box-shadow: none; /* Elimina el sombreado del botón al enfocarlo */
+}
+
+.card-img-top {
+    object-fit: cover;
 }
