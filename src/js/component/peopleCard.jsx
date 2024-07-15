@@ -24,7 +24,7 @@ const PeopleCard = ({ people }) => {
             </div>
             <div className="card-footer">
                 <small className="text-muted">
-                    <a href={`/single/${people.uid}`} className="btn btn-primary">
+                    <a href={`/single/people/${people.uid}`} className="btn btn-primary">
                         View more...
                     </a>
                     <button type="button" className="btn btn-outline-warning ms-1">
