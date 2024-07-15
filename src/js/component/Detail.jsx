@@ -24,9 +24,21 @@ const Detail = () => {
 
    //Cuando la store esten los datos de la people voy a cargar el item los datos 
    useEffect(() => {
-        setItem(store.people)
-    },[store.people]);
+    if (store.people) {
+        setItem(store.people);
+    }
+    if (store.planets) {
+        setItem(store.planets);
+    }
+    if (store.vehicles) {
+        setItem(store.vehicles);
+    }
+}, [store.people, store.planets, store.vehicles]);
 
+
+    const onImageError = (event) => {
+        event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
+    };
 
    //Limpiar la store apenas se monte el componente 
    useEffect(() => {
@@ -44,30 +56,16 @@ const Detail = () => {
    
     return (
         <div>
-            <div className="container my-5">
-                <div className="row">
-                    <div className="col-md-4">
-                        {/* <img
-                            src={imageUrl}
-                            className="card-img-top"
-                            alt={item.name}
-                            onError={ImageError}
-                        /> */}
-                    </div>
-                    <div className="col-md-8 d-flex flex-column justify-content-center align-items-center">
-                        <h1 className="text-white">{item.name}</h1>
-                        <p className="text-white">
-                            {item.description || "No description available."}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="container my-5">
+            <div className="container m-auto">
                 <hr className="separator-red" />
-                <div className="row text-center text-danger">
+                <div className="row text-center text-danger ">
                     {type === "people" && (
                         <>
+                            <img src={`https://starwars-visualguide.com/assets/img/characters/${item.uid}.jpg`} className="object-fit-none"
+                            width={298}
+                            height={500}
+                            alt="imagen"/>
+                            <hr className="separator-red mt-3" />
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
                                 <p className="fs-5">{item.name}</p>
@@ -97,6 +95,11 @@ const Detail = () => {
 
                     {type === "planets" && (
                         <>
+                            <img onError={onImageError} src={`https://starwars-visualguide.com/assets/img/planets/${item.uid}.jpg`} className="object-fit-none"
+                            width={298}
+                            height={400}
+                            alt="imagen"/>
+                            <hr className="separator-red mt-3" />
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
                                 <p className="fs-5">{item.name}</p>
@@ -138,6 +141,11 @@ const Detail = () => {
 
                     {type === "vehicles" && (
                         <>
+                            <img src={`https://starwars-visualguide.com/assets/img/vehicles/${item.uid}.jpg`} className="object-fit-none"
+                            width={298}
+                            height={400}
+                            alt="imagen"/>
+                            <hr className="separator-red mt-3" />
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
                                 <p className="fs-5">{item.name}</p>

@@ -16,7 +16,7 @@ const PlanetCard = ({planet}) => {
                         </div>
                         <div className="card-footer">
                             <small className="text-body-secondary">
-                                <Link to={`/single/planet/${planet.uid}`} class="btn btn-primary">
+                                <Link to={`/single/planets/${planet.uid}`} class="btn btn-primary">
                                     View more...
                                 </Link> 
                                 <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            

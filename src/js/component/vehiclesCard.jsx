@@ -17,7 +17,7 @@ const VehiclesCard = ({ vehicles }) => {
             </div>
             <div className="card-footer">
                 <small className="text-body-secondary">
-                    <Link to={`/single/vehicle/${vehicles.uid}`} className="btn btn-primary">
+                    <Link to={`/single/vehicles/${vehicles.uid}`} className="btn btn-primary">
                         View more...
                     </Link> 
                     <button type="button" className="btn btn-outline-warning ms-1">
