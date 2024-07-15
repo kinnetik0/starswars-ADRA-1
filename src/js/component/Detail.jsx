@@ -65,6 +65,7 @@ const Detail = () => {
                             width={298}
                             height={500}
                             alt="imagen"/>
+                            <h1>{item.description}</h1>
                             <hr className="separator-red mt-3" />
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
@@ -99,7 +100,9 @@ const Detail = () => {
                             width={298}
                             height={400}
                             alt="imagen"/>
+                            <h1>{item.description}</h1>
                             <hr className="separator-red mt-3" />
+                            
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
                                 <p className="fs-5">{item.name}</p>
@@ -145,6 +148,7 @@ const Detail = () => {
                             width={298}
                             height={400}
                             alt="imagen"/>
+                            <h1>{item.description}</h1>
                             <hr className="separator-red mt-3" />
                             <div className="col-2">
                                 <h2 className="fs-3">Name</h2>
