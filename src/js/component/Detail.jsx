@@ -24,16 +24,8 @@ const Detail = () => {
 
    //Cuando la store esten los datos de la people voy a cargar el item los datos 
    useEffect(() => {
-    if (store.people) {
-        setItem(store.people);
-    }
-    if (store.planets) {
-        setItem(store.planets);
-    }
-    if (store.vehicles) {
-        setItem(store.vehicles);
-    }
-}, [store.people, store.planets, store.vehicles]);
+        setItem(store.people)
+    },[store.people]);
 
 
    //Limpiar la store apenas se monte el componente 
@@ -55,12 +47,12 @@ const Detail = () => {
             <div className="container my-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <img
+                        {/* <img
                             src={imageUrl}
                             className="card-img-top"
                             alt={item.name}
                             onError={ImageError}
-                        />
+                        /> */}
                     </div>
                     <div className="col-md-8 d-flex flex-column justify-content-center align-items-center">
                         <h1 className="text-white">{item.name}</h1>
