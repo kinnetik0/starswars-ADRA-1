@@ -1,5 +1,6 @@
 import React from "react";
 import wrapCard from "./Card";
+import { Link } from "react-router-dom";
 
 const PlanetCard = ({planet}) => {
     function onImageError(event){
@@ -14,7 +15,11 @@ const PlanetCard = ({planet}) => {
                             <p class="card-text">Climate: {planet.climate}</p>
                         </div>
                         <div className="card-footer">
-                            <small className="text-body-secondary"><a href={`/single/planet/${planet.uid}`} class="btn btn-primary">View more...</a> <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            
+                            <small className="text-body-secondary">
+                                <Link to={`/single/planet/${planet.uid}`} class="btn btn-primary">
+                                    View more...
+                                </Link> 
+                                <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            
                         </div>                    
                     <div>
                 </div>

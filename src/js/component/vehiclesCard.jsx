@@ -1,5 +1,6 @@
 import React from "react";
 import wrapCard from "./Card";
+import { Link } from "react-router-dom";
 
 const VehiclesCard = ({ vehicles }) => {
     function onImageError(event){
@@ -16,7 +17,9 @@ const VehiclesCard = ({ vehicles }) => {
             </div>
             <div className="card-footer">
                 <small className="text-body-secondary">
-                    <a href={`/single/vehicle/${vehicles.uid}`} className="btn btn-primary">View more...</a> 
+                    <Link to={`/single/vehicle/${vehicles.uid}`} className="btn btn-primary">
+                        View more...
+                    </Link> 
                     <button type="button" className="btn btn-outline-warning ms-1">
                         <i className="fa-regular fa-star"></i>
                     </button>
