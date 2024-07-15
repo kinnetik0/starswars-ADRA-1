@@ -10,18 +10,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             swapiFetch: async (elementType, id) => {
                 try {
                     let resp = await fetch(`${baseURL}/${elementType}/${id}`);
+                    console.log(resp);
                     if (!resp.ok) {
                         console.error(`Error en la peticion: ${resp.status}`);
                         return {};
                     }
                     let data = await resp.json();
+                    console.log("data", data);
                     let obj = {};
                     obj[elementType] = {
                         uid: data.result.uid,
                         description: data.result.description,
                         ...data.result.properties,
                     };
+                    console.log("obj", obj);
                     setStore({ ...obj });
+                    
                 } catch (error) {
                     console.error(`Error en la promesa ${error}`);
                     return {};

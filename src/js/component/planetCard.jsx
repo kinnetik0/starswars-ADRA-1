@@ -1,5 +1,6 @@
 import React from "react";
 import wrapCard from "./Card";
+import { Link } from "react-router-dom";
 
 const PlanetCard = ({planet}) => {
     function onImageError(event){
@@ -14,7 +15,11 @@ const PlanetCard = ({planet}) => {
                             <p class="card-text">Climate: {planet.climate}</p>
                         </div>
                         <div className="card-footer">
-                            <small className="text-body-secondary"><a href={`/single/planet/${planet.uid}`} class="btn btn-primary">View more...</a> <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            
+                            <small className="text-body-secondary">
+                                <Link to={`/single/planet/${planet.uid}`} class="btn btn-primary">
+                                    View more...
+                                </Link> 
+                                <button type="button" className="btn btn-outline-warning ms-1"><i class="fa-regular fa-star"></i></button></small>                            
                         </div>                    
                     <div>
                 </div>
@@ -23,47 +28,3 @@ const PlanetCard = ({planet}) => {
 };
 // Se exporta envuelto en el componente de nivel superior
 export default wrapCard(PlanetCard);
-// Se exporta el componente
-
-// climate
-// : 
-// "arid"
-// created
-// : 
-// "2024-07-11T01:53:30.410Z"
-// description
-// : 
-// "A planet."
-// diameter
-// : 
-// "10465"
-// edited
-// : 
-// "2024-07-11T01:53:30.410Z"
-// gravity
-// : 
-// "1 standard"
-// name
-// : 
-// "Tatooine"
-// orbital_period
-// : 
-// "304"
-// population
-// : 
-// "200000"
-// rotation_period
-// : 
-// "23"
-// surface_water
-// : 
-// "1"
-// terrain
-// : 
-// "desert"
-// uid
-// : 
-// "1"
-// url
-// : 
-// "https://www.swapi.tech/api/planets/1"

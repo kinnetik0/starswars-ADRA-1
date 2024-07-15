@@ -5,30 +5,51 @@ import { Context } from "../store/appContext";
 
 
 const Detail = () => {
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
     const { type, theid } = useParams();
     const [item, setItem] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
+    // este use effect se encarga solamanete de llamar la acción de flux y flux a su vez llama a la api y guarda los resultados en la store
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const data = await actions.swapiFetch(type, theid);
-                setItem(data);
-                setImageUrl(data.imageUrl);
+                await actions.swapiFetch(type, theid);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
         fetchItem();
-    }, [type, theid, actions]);
+    }, [type, theid]);
 
-   
-
-    if (!item) {
-        return <div>Loading...</div>;
+   //Cuando la store esten los datos de la people voy a cargar el item los datos 
+   useEffect(() => {
+    if (store.people) {
+        setItem(store.people);
     }
+    if (store.planets) {
+        setItem(store.planets);
+    }
+    if (store.vehicles) {
+        setItem(store.vehicles);
+    }
+}, [store.people, store.planets, store.vehicles]);
 
+
+   //Limpiar la store apenas se monte el componente 
+   useEffect(() => {
+    setItem(null);
+},[]); 
+    if (!item) {
+        return (<div class="d-flex justify-content-center">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>);
+    }
+    
+   
+   
     return (
         <div>
             <div className="container my-5">

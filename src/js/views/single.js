@@ -1,8 +1,8 @@
 import React from "react";
-import info from "../component/info";
+import Detail from "../component/Detail";
 
 export const Single = () => {
-    return <info />;
+    return <Detail />;
 };
 
-export default Single;
+export default Detail;

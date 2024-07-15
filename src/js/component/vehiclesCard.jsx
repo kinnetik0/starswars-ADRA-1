@@ -1,5 +1,6 @@
 import React from "react";
 import wrapCard from "./Card";
+import { Link } from "react-router-dom";
 
 const VehiclesCard = ({ vehicles }) => {
     function onImageError(event){
@@ -16,7 +17,9 @@ const VehiclesCard = ({ vehicles }) => {
             </div>
             <div className="card-footer">
                 <small className="text-body-secondary">
-                    <a href={`/single/vehicle/${vehicles.uid}`} className="btn btn-primary">View more...</a> 
+                    <Link to={`/single/vehicle/${vehicles.uid}`} className="btn btn-primary">
+                        View more...
+                    </Link> 
                     <button type="button" className="btn btn-outline-warning ms-1">
                         <i className="fa-regular fa-star"></i>
                     </button>
@@ -27,63 +30,3 @@ const VehiclesCard = ({ vehicles }) => {
 };
 export default wrapCard(VehiclesCard);
 
-// uid
-// :
-// "2"
-// description
-// :
-// "A Starship"
-// model
-// :
-// "CR90 corvette"
-// starship_class
-// :
-// "corvette"
-// manufacturer
-// :
-// "Corellian Engineering Corporation"
-// cost_in_credits
-// :
-// "3500000"
-// length
-// :
-// "150"
-// crew
-// :
-// "30-165"
-// passengers
-// :
-// "600"
-// max_atmosphering_speed
-// :
-// "950"
-// hyperdrive_rating
-// :
-// "2.0"
-// MGLT
-// :
-// "60"
-// cargo_capacity
-// :
-// "3000000"
-// consumables
-// :
-// "1 year"
-
-// pilots
-// :
-// []
-// created
-// :
-// "2020-09-17T17:55:06.604Z"
-// edited
-// :
-// "2020-09-17T17:55:06.604Z"
-// name
-// :
-// "CR90 corvette"
-// url
-// :
-// "https://www.swapi.tech/api/starships/2"
-// new entry
-// : 

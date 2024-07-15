@@ -1,5 +1,7 @@
 import React from "react";
 import wrapCard from "./Card";
+import { Link } from "react-router-dom";
+
 
 const PeopleCard = ({ people }) => {
     // Función para manejar el error de carga de imagen
@@ -24,9 +26,9 @@ const PeopleCard = ({ people }) => {
             </div>
             <div className="card-footer">
                 <small className="text-muted">
-                    <a href={`/single/people/${people.uid}`} className="btn btn-primary">
+                    <Link to={`/single/people/${people.uid}`} className="btn btn-primary">
                         View more...
-                    </a>
+                    </Link>
                     <button type="button" className="btn btn-outline-warning ms-1">
                         <i className="far fa-star"></i>
                     </button>
