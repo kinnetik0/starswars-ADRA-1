@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             planetsList: [],
             peopleList: [], 
             vehiclesList: [],
+            favorites: [],
         },
         actions: {
             swapiFetch: async (elementType, id) => {
@@ -31,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return {};
                 }
             },
-            swapiList: async (elementType, page = 1, limit = 20) => {
+            swapiList: async (elementType, page = 1, limit = 10) => {
                 let resp = await fetch(`${baseURL}/${elementType}/?page=${page}&limit=${limit}`)
                 if (!resp.ok) {
                     console.error(`Error en la peticion: ${resp.status}`)
@@ -55,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ ...obj })
                 console.log(data);
             },
-            swapiListPeople: async (elementType, page = 1, limit = 20) => {
+            swapiListPeople: async (elementType, page = 1, limit = 10) => {
                 try {
                     let resp = await fetch(`${baseURL}/${elementType}/?page=${page}&limit=${limit}`);
                     if (!resp.ok) {
@@ -79,6 +80,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error(`Error en la promesa ${error}`);
                 }
             },
+        },
+        addFavorites: (name) =>{
+            const store = getstore();
+            if (store.favorites.includes(name)){
+                setStore({favorites:store.favorites.filter(item => item !== name)});
+            } else {
+                setStore({favorites: [...store.favorites, name]});
+            }
         },
     };
 };

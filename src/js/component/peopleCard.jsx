@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import wrapCard from "./Card";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 
 const PeopleCard = ({ people }) => {
@@ -9,6 +11,9 @@ const PeopleCard = ({ people }) => {
         event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
     };
 
+    const{store, actions} = useContext(Context);
+
+    console.log(store.favorites);
     return (
         <div className="card">
             <img
@@ -29,7 +34,7 @@ const PeopleCard = ({ people }) => {
                     <Link to={`/single/people/${people.uid}`} className="btn btn-primary">
                         View more...
                     </Link>
-                    <button type="button" className="btn btn-outline-warning ms-1">
+                    <button type="button" className="btn btn-outline-warning ms-1" onClick={()=>actions.addFavorites(people.name)}>
                         <i className="far fa-star"></i>
                     </button>
                 </small>
