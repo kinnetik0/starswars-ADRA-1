@@ -8,7 +8,7 @@ const Detail = () => {
     const { store, actions } = useContext(Context);
     const { type, theid } = useParams();
     const [item, setItem] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
+   
 
     // este use effect se encarga solamanete de llamar la acción de flux y flux a su vez llama a la api y guarda los resultados en la store
     useEffect(() => {

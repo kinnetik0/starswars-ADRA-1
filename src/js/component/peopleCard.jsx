@@ -12,8 +12,8 @@ const PeopleCard = ({ people }) => {
     };
 
     const{store, actions} = useContext(Context);
-
-    console.log(store.favorites);
+       
+    
     return (
         <div className="card">
             <img

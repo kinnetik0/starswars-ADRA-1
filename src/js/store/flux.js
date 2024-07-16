@@ -8,6 +8,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             favorites: [],
         },
         actions: {
+            addFavorites: (name) =>{
+                const store = getStore();
+                if (store.favorites.includes(name)){
+                    setStore({favorites:store.favorites.filter(item => item !== name)});
+                } else {
+                    setStore({favorites: [...store.favorites, name]});
+                }
+            },
             swapiFetch: async (elementType, id) => {
                 try {
                     let resp = await fetch(`${baseURL}/${elementType}/${id}`);
@@ -32,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     return {};
                 }
             },
-            swapiList: async (elementType, page = 1, limit = 10) => {
+            swapiList: async (elementType, page = 1, limit = 20) => {
                 let resp = await fetch(`${baseURL}/${elementType}/?page=${page}&limit=${limit}`)
                 if (!resp.ok) {
                     console.error(`Error en la peticion: ${resp.status}`)
@@ -56,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ ...obj })
                 console.log(data);
             },
-            swapiListPeople: async (elementType, page = 1, limit = 10) => {
+            swapiListPeople: async (elementType, page = 1, limit = 20) => {
                 try {
                     let resp = await fetch(`${baseURL}/${elementType}/?page=${page}&limit=${limit}`);
                     if (!resp.ok) {
@@ -81,14 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
         },
-        addFavorites: (name) =>{
-            const store = getstore();
-            if (store.favorites.includes(name)){
-                setStore({favorites:store.favorites.filter(item => item !== name)});
-            } else {
-                setStore({favorites: [...store.favorites, name]});
-            }
-        },
+       
     };
 };
 
